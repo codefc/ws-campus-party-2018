@@ -13,6 +13,10 @@ O objetivo do workshop será desenvolver o seguinte projeto:
 ![Diagrama do Projeto](/img/ProjetoCampusParty_2018.png)
 
 
+EXPLICAR CARA RAIA
+EXPLICAR TRUNK BASED
+EXPLICAR FEATURE TOGGLE
+
 ## Pré-requisitos
 
 - Visual Studio Community / Visual Studio Code
@@ -44,3 +48,13 @@ O Configcat será o servidor de toggle utilizado no workshop. Siga os seguintes 
 DEFINIR PASSOS
 
 GUARDAR O API KEY
+
+PROJETO DE API CRIADO (DEFINIR O Q)
+
+PROJETO DE FRONT CRIADO (DEFINIR O Q)
+
+CONFIGURAR PASSOS DE CRIAR O AZURE PIPELINE
+CONFIGURAR BUILD
+CONFIGURAR RELEASE
+CRIAR FUNCIONALIDADE COM ERRO (PARA SIMULAR HABILITAR O TOGGLE)
+CRIAR FUNCIONALIDADE SEM ERRO (HABILITANDO O TOKEN COM ACERTO)
