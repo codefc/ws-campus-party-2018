@@ -10,7 +10,7 @@ Este repositório foi criado com o intuito de servir como base para o workshop s
 O objetivo do workshop será desenvolver o seguinte projeto:
 
 
-![Diagrama do Projeto](/img/ProjetoCampusParty_2018.png)
+![Diagrama do Projeto](/img/ProjetoCampusParty2018.png)
 
 
 EXPLICAR CARA RAIA
