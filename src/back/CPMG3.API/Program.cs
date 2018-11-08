@@ -19,6 +19,11 @@ namespace CPMG3.API
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                   .ConfigureLogging((hostingContext, logging) =>
+                   {
+                       logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
+                       logging.AddConsole();
+                       logging.AddDebug();
+                   }).UseStartup<Startup>();
     }
 }

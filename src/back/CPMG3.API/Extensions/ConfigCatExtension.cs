@@ -11,9 +11,7 @@ namespace CPMG3.API.Extensions
         {
             services.AddSingleton<IConfigCatClient>(new ConfigCatClient(new LazyLoadConfiguration
             {
-                ApiKey = apiKey,
-
-                CacheTimeToLiveSeconds = 120
+                ApiKey = apiKey
             }));
         }
     }

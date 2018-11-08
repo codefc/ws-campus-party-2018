@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using CPMG3.API.Filter;
 using CPMG3.API.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace CPMG3.API.Controllers
 {
@@ -13,10 +15,14 @@ namespace CPMG3.API.Controllers
     public class ValuesController : ControllerBase
     {
         private readonly IGithubAPIService _service;
+        private readonly ILogger _log;
+        private readonly IConfiguration _configuration;
 
-        public ValuesController(IGithubAPIService service)
+        public ValuesController(IGithubAPIService service, ILogger<ValuesController> log, IConfiguration configuration)
         {
             _service = service;
+            _log = log;
+            _configuration = configuration;
         }
 
         [FeatureToggleFilter(ApplicationConstants.FeatureToggle.ACAO_EXCLUIR)]
@@ -25,7 +31,7 @@ namespace CPMG3.API.Controllers
         public async Task<ActionResult<object>> Get()
         {
             //return new string[] { "value1", "value2" };
-
+           
             return await _service.GetRepositories();
         }
 
