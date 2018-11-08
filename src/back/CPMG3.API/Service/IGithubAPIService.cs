@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Refit;
 
 namespace CPMG3.API.Service
 {
-    public interface IGithubAPI
+    public interface IGithubAPIService
     {
-        [Get("/tanure/repos")]
-        List<object> GetRepositories();
+        [Get("/users/tanure/repos")]
+        Task<List<object>> GetRepositories();
     }
 }

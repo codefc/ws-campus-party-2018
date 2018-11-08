@@ -1,10 +1,20 @@
 ﻿using System;
+using ConfigCat.Client;
+using ConfigCat.Client.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace CPMG3.API.Extensions
 {
-    public class ConfigCatExtension
+    public static class ConfigCatExtension
     {
-        public ConfigCatExtension()
+        public static void AddConfigCat(this IServiceCollection services, string apiKey)
         {
+            services.AddSingleton<IConfigCatClient>(new ConfigCatClient(new LazyLoadConfiguration
+            {
+                ApiKey = apiKey,
+
+                CacheTimeToLiveSeconds = 120
+            }));
         }
     }
 }
