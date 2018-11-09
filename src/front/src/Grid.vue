@@ -1,49 +1,71 @@
 <template>
-<div id="grid">
-    <v-data-table
-            :headers="headers"
-            :items="repositories"
-            hide-actions
-            class="elevation-1"
-          >
-            <template slot="items" slot-scope="props">
-              <td>{{ props.item.name }}</td>
-              <td class="text-xs-right">{{ props.item.calories }}</td>
-              <td class="text-xs-right">{{ props.item.fat }}</td>
-              <td class="text-xs-right">{{ props.item.carbs }}</td>
-              <td class="text-xs-right">{{ props.item.protein }}</td>
-              <td class="text-xs-right">{{ props.item.iron }}</td>
-            </template>
-          </v-data-table>
+<div class="col-md-12">   
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered" style="width:100%">
+          <thead width="400px">
+              <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col" >Full Name</th>
+                  <th scope="col" >Description</th>
+                  <th>#</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr v-for="(item, index) in repositories" :key="index">                
+                <td>{{item.name}}</td>
+                <td>{{item.full_name}}</td>
+                <td>{{item.description}}</td>
+                <td>
+                  <b-button v-on:click="excluir" >
+                   Excluir
+                  </b-button>
+                </td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
   </div>
+
 </template>
 
 <script>
 import axios from "axios";
+import configcat from "configcat-node"
+
+
+
 export default {
   name: 'grid',
   
   data () {
-      return {
-          headers: [
-          { text: 'Name', value: 'name' },
-          { text: 'Full name', value: 'full_name' },
-          { text: 'Description', value: 'description' }
-        ],
-          repositories: []
+      return {         
+          repositories: [],
+          client : {}
       }
   },
   created () {
+      this.client = configcat.createClient("UULWCKjmCACU7eTV-m68mw/WDlzpoCU-E6t1EkARRUyUA")
+
       axios
       .get('https://resoluty-sh.azurewebsites.net/api/Values')
       .then(response => {
-        console.log(response)
         this.repositories = response.data
       })
       .catch(error => {
         console.log(error)
         this.errored = true
       })
+    },
+    methods: {
+      excluir: function(){
+        alert(this.featureToggle("AcaoExcluir"))
+      },
+      featureToggle : function(toggleName) {
+        this.client.forceRefresh();
+
+        return this.client.getValue(toggleName, false);
+      }
     }
 }
 </script>
+

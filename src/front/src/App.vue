@@ -1,16 +1,23 @@
 <template>
   <div id="app">
-    
-       <grid></grid>
+    <b-navbar toggleable="md" type="dark" variant="info">
 
+  <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+
+  <b-navbar-brand href="#">Campus Party MG 2018 - Workshop</b-navbar-brand>
+
+  
+</b-navbar>
+  <div class="row">
+    <Grid />
+    </div>
   </div>
 </template>
 
 <script>
 import Grid from './Grid.vue'
-import Bota from './Bota.vue'
-
-
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 export default {
   name: 'app',
   components: {
@@ -26,24 +33,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
+  margin-top: 0px;
 }
 </style>
