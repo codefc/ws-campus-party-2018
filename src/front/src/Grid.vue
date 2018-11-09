@@ -16,7 +16,7 @@
                 <td>{{item.full_name}}</td>
                 <td>{{item.description}}</td>
                 <td>
-                  <b-button v-on:click="excluir" >
+                  <b-button v-on:click="excluir" v-if="acaoExcluirHabilitada">
                    Excluir
                   </b-button>
                 </td>
@@ -30,9 +30,7 @@
 
 <script>
 import axios from "axios";
-import configcat from "configcat-node"
-
-
+const configcat = require("configcat-node");
 
 export default {
   name: 'grid',
@@ -40,11 +38,15 @@ export default {
   data () {
       return {         
           repositories: [],
-          client : {}
+          client : {},
+          acaoExcluirHabilitada: false
       }
   },
   created () {
       this.client = configcat.createClient("UULWCKjmCACU7eTV-m68mw/WDlzpoCU-E6t1EkARRUyUA")
+      return this.client.getValue("AcaoExcluir", false, { identifier: "usuario"}, (acaoExcluir) => {
+        this.acaoExcluirHabilitada = acaoExcluir;
+      });
 
       axios
       .get('https://resoluty-sh.azurewebsites.net/api/Values')
@@ -58,14 +60,14 @@ export default {
     },
     methods: {
       excluir: function(){
-        alert(this.featureToggle("AcaoExcluir"))
+        alert(acaoExcluirHabilitada);
       },
       featureToggle : function(toggleName) {
         this.client.forceRefresh();
 
         return this.client.getValue(toggleName, false);
       }
-    }
+    },
 }
 </script>
 
