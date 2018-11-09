@@ -19,20 +19,31 @@
 </template>
 
 <script>
-
+import axios from "axios";
 export default {
   name: 'grid',
   
-  props: {
+  data () {
+      return {
           headers: [
           { text: 'Name', value: 'name' },
           { text: 'Full name', value: 'full_name' },
           { text: 'Description', value: 'description' }
         ],
-          repositories: Array
-      },
-  data () {
-      return {}
-  }
+          repositories: []
+      }
+  },
+  created () {
+      axios
+      .get('https://resoluty-sh.azurewebsites.net/api/Values')
+      .then(response => {
+        console.log(response)
+        this.repositories = response.data
+      })
+      .catch(error => {
+        console.log(error)
+        this.errored = true
+      })
+    }
 }
 </script>

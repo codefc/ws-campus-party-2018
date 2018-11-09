@@ -1,53 +1,21 @@
 <template>
   <div id="app">
-    <v-app>
-    <v-toolbar color="indigo" dark fixed app>
-      <v-toolbar-title>Campus Party MG 2018 | Workshop - Feature Toggle/Trung Based</v-toolbar-title>
-    </v-toolbar>
-    <v-content>
-      <v-container fluid fill-height>
-        <v-layout
-        justify-center column fill-height
-        >
-        <grid :repositories="repositories"></grid>
+    
+       <grid></grid>
 
-        </v-layout>
-      </v-container>
-    </v-content>
-    <v-footer color="indigo" app inset>
-      <span class="white--text">&copy; Code FC 2018</span>
-    </v-footer>
-    </v-app>
   </div>
 </template>
 
 <script>
-import Grid from './Grid'
-import axios from "axios";
+import Grid from './Grid.vue'
+import Bota from './Bota.vue'
 
 
 export default {
   name: 'app',
-  data () {
-    return {
-      repositories: Array
-    }
-  },
   components: {
     Grid
-  },
-  created () {
-      axios
-      .get('https://resoluty-sh.azurewebsites.net/api/Values')
-      .then(response => {
-        console.log(response)
-        this.repositories = response
-      })
-      .catch(error => {
-        console.log(error)
-        this.errored = true
-      })
-    }
+  }
 }
 </script>
 
