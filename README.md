@@ -127,7 +127,7 @@ No menu, clique na opção **Build** e siga os seguintes passos para definir uma
   - Feche a janela
   - Selecione a connection criada em **Docker Registry**
 - **DockerFile**: src/back/Dockerfile
-- **Image name**: <USUARIO_DOCKERHUB>/$(Build.Repository.Name):$(Build.BuildId)
+- **Image name**: <USUARIO_DOCKERHUB>/<NOME_DA_IMAGEM_BACK>:$(Build.BuildId)
 
 ![Build image step](/img/buildimagestep.png)
 
@@ -136,7 +136,7 @@ No menu, clique na opção **Build** e siga os seguintes passos para definir uma
 - **Version**: 1.*
 - **Container registry type**: Container Registry
 - **Docker registry service connection**: Docker Hub
-- **Image name**: <USUARIO_DOCKERHUB>/$(Build.Repository.Name):$(Build.BuildId)
+- **Image name**: <USUARIO_DOCKERHUB_BACK>/$<NOME_DA_IMAGEM>:$(Build.BuildId)
 
 ![Push Image](/img/pushimagestep.png)
 
