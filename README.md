@@ -66,17 +66,6 @@ Após a criação do projeto, acesse o seu gerenciamento:
 
 ![Gerenciando o projeto](/img/ManageProject.png)
 
-Crie uma nova configuração:
-
-![Nova configuração](/img/newConfigCC.png)
-
-A nova configuração será um toggle para representar a funcionalidade de exclusão na aplicação.
-
-- **Name for humans**: Ação de exclusão
-- **Key for programs**: AcaoExclusao
-- **Setting type**: On/Off Toggle (Boolean)
-
-![Dados da nova configuração](/img/newAction.png)
 
 Clique na aba **Environment** e guarde o valor da **API Key** para utilzação nos projetos de frontend e backend.
 
@@ -149,12 +138,46 @@ No menu, clique na opção **Build** e siga os seguintes passos para definir uma
 
 Com a build criada, basta clicar no botão **Save and queue** para efetuar a primeira compilação do backend.
 
-PROJETO DE API CRIADO (DEFINIR O Q)
+#### Build do Frontend
 
-PROJETO DE FRONT CRIADO (DEFINIR O Q)
+A criação da build do Frontend é semelhante à do Backend com as seguintes configurações específicas:
 
-CONFIGURAR PASSOS DE CRIAR O AZURE PIPELINE
-CONFIGURAR BUILD
-CONFIGURAR RELEASE
-CRIAR FUNCIONALIDADE COM ERRO (PARA SIMULAR HABILITAR O TOGGLE)
-CRIAR FUNCIONALIDADE SEM ERRO (HABILITANDO O TOKEN COM ACERTO)
+##### Build and image
+
+- **DockerFile**: src/front/Dockerfile
+
+O Restante das configurações são idênticas.
+
+##### Build do projeto
+
+Com a build criada, basta clicar no botão **Save and queue** para efetuar a primeira compilação do backend.
+
+#### Azure
+
+Antes de configurar a release dos projetos, será necessário criar alguns recursos no **Azure**.
+
+Acesse [https://portal.azure.com](https://portal.azure.com)
+
+
+No portal execute os seguintes passos:
+
+- Clique em **Create a resource**
+- Na caixa de texto, digite **Web App for Containers**
+- Clique em **Create**
+- Defina um nome em **App Name** para conter o serviço de backend
+- Selecione a **subscription**
+- Em **Resource Group** selecione **Create New** e defina o nome de **CPMG3**
+- Em OS defina a opção **Linux**
+- Crie um **App Service plan/location**, caso não exista
+- Clique em **Configure container**
+- Em **Image source** selecione **Docker Hub**
+- Em **Image and optional tag (eg 'image:tag')** defina o valor como **hello-world** e em seguida clique em **Apply**
+- Clique em **Create** e aguarde a criação do recurso.
+
+
+Efetue os mesmos procedimentos acima para criar um Web app for container para a aplicação de front. Mas na opção **Resourse Group** marque **Use existing** e selecione **CPMG3**.
+
+#### Criação das Releases
+
+### Criação de uma nova feature
+
