@@ -7,7 +7,7 @@
                   <th scope="col">Name</th>
                   <th scope="col" >Full Name</th>
                   <th scope="col" >Description</th>
-                  <th>#</th>
+                  <th v-if="toggle">#</th>
               </tr>
           </thead>
           <tbody>
@@ -15,9 +15,9 @@
                 <td>{{item.name}}</td>
                 <td>{{item.full_name}}</td>
                 <td>{{item.description}}</td>
-                <td>
-                  <b-button v-on:click="excluir" v-if="acaoExcluirHabilitada">
-                   Excluir
+                <td v-if="toggle">
+                  <b-button v-on:click="novaAcao" >
+                   Ação
                   </b-button>
                 </td>
               </tr>
@@ -39,17 +39,17 @@ export default {
       return {         
           repositories: [],
           client : {},
-          acaoExcluirHabilitada: false
+          toggle: false
       }
   },
   created () {
-      this.client = configcat.createClient("UULWCKjmCACU7eTV-m68mw/WDlzpoCU-E6t1EkARRUyUA")
-      return this.client.getValue("AcaoExcluir", false, { identifier: "usuario"}, (acaoExcluir) => {
-        this.acaoExcluirHabilitada = acaoExcluir;
+      this.client = configcat.createClient("<API_KEY>")
+      return this.client.getValue("ACAO", false, { identifier: "usuario_COMUM"}, (acaoExcluir) => {
+        this.toggle = acaoExcluir;
       });
 
       axios
-      .get('https://resoluty-sh.azurewebsites.net/api/Values')
+      .get('<API>')
       .then(response => {
         this.repositories = response.data
       })
@@ -59,13 +59,8 @@ export default {
       })
     },
     methods: {
-      excluir: function(){
-        alert(acaoExcluirHabilitada);
-      },
-      featureToggle : function(toggleName) {
-        this.client.forceRefresh();
-
-        return this.client.getValue(toggleName, false);
+      novaAcao: function(){
+        
       }
     },
 }

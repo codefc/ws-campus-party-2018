@@ -52,6 +52,12 @@ A API desenvolvida no projeto será construída utilizando o .NET Core 2.1. Se a
 
 Para a publicação das aplicações utilizadas no workshop, será necessário possuir uma conta no Azure. Caso ainda não possua uma conta, acesse o seguinte site: [https://azure.microsoft.com/en-us/free/](https://azure.microsoft.com/en-us/free/) e crie uma conta gratuita.
 
+### NodeJs e NPM
+
+A aplicação de frontend depdende do NodeJS instalado e também do NPM (Nuget package manager).
+
+[Instalação](https://nodejs.org/en/)
+
 ### ConfigCat
 
 O Configcat será o servidor de toggle utilizado no workshop. Siga os seguintes passos para criar uma conta:
@@ -121,7 +127,7 @@ No menu, clique na opção **Build** e siga os seguintes passos para definir uma
   - Feche a janela
   - Selecione a connection criada em **Docker Registry**
 - **DockerFile**: src/back/Dockerfile
-- **Image name**: $(Build.Repository.Name):$(Build.BuildId)
+- **Image name**: <USUARIO_DOCKERHUB>/$(Build.Repository.Name):$(Build.BuildId)
 
 ![Build image step](/img/buildimagestep.png)
 
@@ -130,7 +136,7 @@ No menu, clique na opção **Build** e siga os seguintes passos para definir uma
 - **Version**: 1.*
 - **Container registry type**: Container Registry
 - **Docker registry service connection**: Docker Hub
-- **Image name**: $(Build.Repository.Name):$(Build.BuildId)
+- **Image name**: <USUARIO_DOCKERHUB>/$(Build.Repository.Name):$(Build.BuildId)
 
 ![Push Image](/img/pushimagestep.png)
 

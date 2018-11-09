@@ -12,12 +12,12 @@ namespace CPMG3.API.Extensions
         {
             services.AddSingleton(new GitHeadersHandler());
 
-            services.AddRefitClient<IGithubAPIService>().ConfigurePrimaryHttpMessageHandler<GitHeadersHandler>()
-                   // .AddTypedClient<GitHeadersHandler>()
-                    .ConfigureHttpClient(c =>
-                    {
-                        c.BaseAddress = new Uri(ApplicationConstants.Services.API_BASE_ADDRESS);
-                    });
+            services.AddRefitClient<IGithubAPIService>()
+                .ConfigurePrimaryHttpMessageHandler<GitHeadersHandler>()
+                .ConfigureHttpClient(c =>
+                {
+                    c.BaseAddress = new Uri(ApplicationConstants.Services.API_BASE_ADDRESS);
+                });
         }
     }
 }
