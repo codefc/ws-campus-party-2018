@@ -84,6 +84,7 @@ namespace CPMG3.API
                 c.RoutePrefix = string.Empty;
             });
 
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
             //app.UseHttpsRedirection();
             app.UseMvc();
         }
