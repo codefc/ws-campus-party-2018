@@ -83,7 +83,7 @@ namespace CPMG3.API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", ApplicationConstants.Documentation.API_NAME);
                 c.RoutePrefix = string.Empty;
             });
-
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
             //app.UseHttpsRedirection();
             app.UseMvc();
         }
