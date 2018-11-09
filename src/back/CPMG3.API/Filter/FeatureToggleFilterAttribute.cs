@@ -19,7 +19,7 @@ namespace CPMG3.API.Filter
         {
             IConfigCatClient configCatClient = context.HttpContext.RequestServices.GetService(typeof(IConfigCatClient)) as IConfigCatClient;
 
-            if (configCatClient != null && !configCatClient.GetValue("exibirOpcaoDeExcluir", false))
+            if (configCatClient != null && !configCatClient.GetValue(ApplicationConstants.FeatureToggle.ACAO_EXCLUIR, false))
             {
                 context.Result = new NotFoundResult();
             }
