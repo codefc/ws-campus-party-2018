@@ -26,10 +26,6 @@ O Backend foi desenvolvido utilizando a versão 2.1 do .net Core. A apicação s
 
 O Frontend foi desenvolvido utilizando o framework VueJS. Fique tranquilo se nunca trabalhou com este framwork. Os tópicos abaixo vão direcioná-lo em como interagir com o código para provar os principais conceitos deste workshop.
 
-EXPLICAR CARA RAIA
-EXPLICAR TRUNK BASED
-EXPLICAR FEATURE TOGGLE
-
 ## Pré-requisitos
 
 - Visual Studio Community / Visual Studio Code
@@ -113,13 +109,46 @@ Ao terminas os passos anteriores, o AzurePipeline irá solicitar a configuraçã
 2. Defina como **Off** a opção **New YAML pipeline creation expirience**:
 ![Desabilitando feature de YAML](/img/offNewFeature.png)
 
+#### Build do Backend
+
 No menu, clique na opção **Build** e siga os seguintes passos para definir uma build para o backend:
 
 1. Clique em **New pipeline**
 2. Em **Select a source** deixe a opção **Azure Repos Git** marcada com o repositório do seu projeto no **Azure Pipeline** e clique em continue.
 3. Selecione a opção **Docker Container** e clique em **Apply**:
 ![Template de Pipeline](/img/dockercontainer.png).
-4. 
+4. Configure os steps de acordo com os seguintes parâmetros:
+
+##### Build and image
+
+- **Version**: 1.*
+- **Container registry type**: Container Registry
+- **Docker registry service connection**:
+  - Clique na opção **Manage**
+  - Na nova janela, clique em **New Service Connection** e em **Docker Registry**:
+  ![Docker Registry](/img/dockerregistry.png)
+  - No diálogo **Add Docker Registry service connection**, marque a opção **Docker Hub** em **Registry type** e em seguida defina um nome para a conexão, Docker Hub por exemplo, insira o **Docker ID(seu usuário do docker hub), senha e e-mail e clique em ok.
+  ![Docker Hub connection](/img/dockerhubregistry.png)
+  - Feche a janela
+  - Selecione a connection criada em **Docker Registry**
+- **DockerFile**: src/back/Dockerfile
+- **Image name**: $(Build.Repository.Name):$(Build.BuildId)
+
+![Build image step](/img/buildimagestep.png)
+
+##### Push an image
+
+- **Version**: 1.*
+- **Container registry type**: Container Registry
+- **Docker registry service connection**: Docker Hub
+- **Image name**: $(Build.Repository.Name):$(Build.BuildId)
+
+![Push Image](/img/pushimagestep.png)
+
+##### Build do projeto
+
+Com a build criada, basta clicar no botão **Save and queue** para efetuar a primeira compilação do backend.
+
 PROJETO DE API CRIADO (DEFINIR O Q)
 
 PROJETO DE FRONT CRIADO (DEFINIR O Q)
