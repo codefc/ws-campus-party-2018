@@ -118,7 +118,7 @@ No menu, clique na opção **Build** e siga os seguintes passos para definir uma
 1. Clique em **New pipeline**
 2. Em **Select a source** deixe a opção **Azure Repos Git** marcada com o repositório do seu projeto no **Azure Pipeline** e clique em continue.
 3. Selecione a opção **Docker Container** e clique em **Apply**:
-![Template de Pipeline](/img/dockerContainer.png).
+![Template de Pipeline](/img/dockercontainer.png).
 4. 
 PROJETO DE API CRIADO (DEFINIR O Q)
 
