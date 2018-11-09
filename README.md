@@ -66,17 +66,6 @@ Após a criação do projeto, acesse o seu gerenciamento:
 
 ![Gerenciando o projeto](/img/ManageProject.png)
 
-Crie uma nova configuração:
-
-![Nova configuração](/img/newConfigCC.png)
-
-A nova configuração será um toggle para representar a funcionalidade de exclusão na aplicação.
-
-- **Name for humans**: Ação de exclusão
-- **Key for programs**: AcaoExclusao
-- **Setting type**: On/Off Toggle (Boolean)
-
-![Dados da nova configuração](/img/newAction.png)
 
 Clique na aba **Environment** e guarde o valor da **API Key** para utilzação nos projetos de frontend e backend.
 
@@ -190,13 +179,5 @@ Efetue os mesmos procedimentos acima para criar um Web app for container para a 
 
 #### Criação das Releases
 
+### Criação de uma nova feature
 
-
-PROJETO DE API CRIADO (DEFINIR O Q)
-
-PROJETO DE FRONT CRIADO (DEFINIR O Q)
-
-
-CONFIGURAR RELEASE
-CRIAR FUNCIONALIDADE COM ERRO (PARA SIMULAR HABILITAR O TOGGLE)
-CRIAR FUNCIONALIDADE SEM ERRO (HABILITANDO O TOKEN COM ACERTO)
