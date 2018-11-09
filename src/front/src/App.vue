@@ -1,30 +1,42 @@
 <template>
-  <div id="grid">
-    <v-data-table
-            :headers="headers"
-            :items="repositories"
-            hide-actions
-            class="elevation-1"
-          >
-            <template slot="items" slot-scope="props">
-              <td>{{ props.item.name }}</td>
-              <td class="text-xs-right">{{ props.item.calories }}</td>
-              <td class="text-xs-right">{{ props.item.fat }}</td>
-              <td class="text-xs-right">{{ props.item.carbs }}</td>
-              <td class="text-xs-right">{{ props.item.protein }}</td>
-              <td class="text-xs-right">{{ props.item.iron }}</td>
-            </template>
-          </v-data-table>
+  <div id="app">
+    <v-app>
+    <v-toolbar color="indigo" dark fixed app>
+      <v-toolbar-title>Campus Party MG 2018 | Workshop - Feature Toggle/Trung Based</v-toolbar-title>
+    </v-toolbar>
+    <v-content>
+      <v-container fluid fill-height>
+        <v-layout
+        justify-center column fill-height
+        >
+        <grid :repositories="repositories"></grid>
+
+        </v-layout>
+      </v-container>
+    </v-content>
+    <v-footer color="indigo" app inset>
+      <span class="white--text">&copy; Code FC 2018</span>
+    </v-footer>
+    </v-app>
   </div>
 </template>
 
 <script>
+import Grid from './Grid'
 import axios from "axios";
 
 
 export default {
-  name: 'grid',
-  mounted () {
+  name: 'app',
+  data () {
+    return {
+      repositories: Array
+    }
+  },
+  components: {
+    Grid
+  },
+  created () {
       axios
       .get('https://resoluty-sh.azurewebsites.net/api/Values')
       .then(response => {
@@ -35,17 +47,7 @@ export default {
         console.log(error)
         this.errored = true
       })
-    },
-  data () {
-      return {
-        headers: [
-          { text: 'Name', value: 'name' },
-          { text: 'Full name', value: 'full_name' },
-          { text: 'Description', value: 'description' }
-        ],
-        repositories: []
-      }
-  }
+    }
 }
 </script>
 
